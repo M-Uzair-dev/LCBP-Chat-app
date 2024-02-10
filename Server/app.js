@@ -8,7 +8,12 @@ const bodyparser = require("body-parser");
 require("dotenv").config();
 
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    credentials: true,
+    origin: "https://messegit.vercel.app",
+  })
+);
 
 app.use(bodyparser.json());
 app.use(express.urlencoded({ extended: false }));

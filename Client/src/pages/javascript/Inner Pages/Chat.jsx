@@ -136,6 +136,7 @@ export default function Chat(props) {
         const res = await fetch(
           "https://messegitapi.vercel.app/messages/getlatest",
           {
+            mode: "no-cors",
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ chatID: id, userID: user.id }),
