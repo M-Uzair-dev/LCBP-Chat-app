@@ -53,7 +53,6 @@ const Login = () => {
           return;
         }
         showsnackbar();
-        window.alert("Wrong credentials");
       }
     } catch (error) {
       enqueueSnackbar("An error occurred during login", { variant: "error" });
