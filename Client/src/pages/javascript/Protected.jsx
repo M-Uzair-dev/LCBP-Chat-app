@@ -15,7 +15,7 @@ export default function Protected() {
     const validate = async () => {
       try {
         if (!id) {
-          // navigate("/login");
+          navigate("/login");
           return;
         }
 
@@ -53,7 +53,7 @@ export default function Protected() {
         };
         dispatch(setUser(temp));
       } catch (error) {
-        console.log("PR ERROR : " + error);
+        localStorage.removeItem("id");
         navigate("/login");
       }
     };
