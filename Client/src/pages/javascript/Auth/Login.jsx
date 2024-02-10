@@ -53,6 +53,7 @@ const Login = () => {
         }
       }
     } catch (error) {
+      console.log(error);
       enqueueSnackbar("An error occurred during login", { variant: "error" });
     } finally {
       setLoading("");
