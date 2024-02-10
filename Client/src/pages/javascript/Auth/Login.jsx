@@ -35,6 +35,7 @@ const Login = () => {
         const response = await fetch(
           "https://messegitapi.vercel.app/auth/login",
           {
+            mode: "no-cors",
             method: "POST",
             headers: {
               "Content-Type": "application/json",

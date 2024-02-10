@@ -108,6 +108,7 @@ const Signup = () => {
         const response = await fetch(
           "https://messegitapi.vercel.app/auth/check",
           {
+            mode: "no-cors",
             method: "POST",
             headers: {
               "Content-Type": "application/json",
