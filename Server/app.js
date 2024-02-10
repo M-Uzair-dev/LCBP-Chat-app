@@ -8,7 +8,6 @@ const bodyparser = require("body-parser");
 require("dotenv").config();
 
 const app = express();
-
 app.use(
   cors({
     credentials: true,
@@ -20,25 +19,16 @@ app.use(bodyparser.json());
 app.use(express.urlencoded({ extended: false }));
 
 mongoose
-  .connect(process.env.DATABASE_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(process.env.DATABASE_URL)
   .then(() => {
     console.log("Database Connected Successfully!");
   })
-  .catch((err) => {
-    console.error("Database connection error:", err);
-  });
+  .catch((err) => {});
 
 app.use("/chats", chatsRoute);
 app.use("/auth", authRoute);
 app.use("/messages", messagesroute);
 
-app.options("*", cors());
-
-// Start server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+app.listen(5000, () => {
+  console.log("Server running on port 5000");
 });
