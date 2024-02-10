@@ -43,7 +43,7 @@ const Login = () => {
           }
         );
         const res = await response.json();
-
+        console.log(res);
         if (res.success) {
           localStorage.setItem("id", res.id);
           navigate("/chats");
