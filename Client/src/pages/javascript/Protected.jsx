@@ -19,15 +19,18 @@ export default function Protected() {
           return;
         }
 
-        const response = await fetch("http://localhost:5000/auth/validate", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            id: userId,
-          }),
-        });
+        const response = await fetch(
+          "https://messegitapi.vercel.app/auth/validate",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              id: userId,
+            }),
+          }
+        );
 
         if (!response.ok) {
           throw new Error();
