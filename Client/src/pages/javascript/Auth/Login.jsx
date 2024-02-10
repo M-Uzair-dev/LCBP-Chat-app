@@ -24,6 +24,10 @@ const Login = () => {
     setData({ ...data, [e.target.id]: e.target.value });
   };
 
+  const showsnackbar = () => {
+    enqueueSnackbar("Invalid credentials", { variant: "error" });
+  };
+
   const submit = async () => {
     setLoading("button");
     try {
@@ -48,7 +52,7 @@ const Login = () => {
           navigate("/chats");
           return;
         }
-        enqueueSnackbar("Invalid credentials", { variant: "error" });
+        showsnackbar();
       }
     } catch (error) {
       enqueueSnackbar("An error occurred during login", { variant: "error" });
