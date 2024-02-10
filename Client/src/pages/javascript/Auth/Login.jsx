@@ -46,9 +46,9 @@ const Login = () => {
         if (res.success) {
           localStorage.setItem("id", res.id);
           navigate("/chats");
-        } else {
-          enqueueSnackbar("Invalid credentials", { variant: "error" });
+          return;
         }
+        enqueueSnackbar("Invalid credentials", { variant: "error" });
       }
     } catch (error) {
       enqueueSnackbar("An error occurred during login", { variant: "error" });
