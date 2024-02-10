@@ -43,16 +43,15 @@ const Login = () => {
           }
         );
         const res = await response.json();
-        console.log(res);
         if (res.success) {
           localStorage.setItem("id", res.id);
           navigate("/chats");
         } else {
+          console.log("here");
           enqueueSnackbar("Invalid Credentials", { variant: "error" });
         }
       }
     } catch (error) {
-      console.log(error);
       enqueueSnackbar("An error occurred during login", { variant: "error" });
     } finally {
       setLoading("");
