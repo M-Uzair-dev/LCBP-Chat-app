@@ -280,6 +280,7 @@ export default function Chat(props) {
         userId: user.id,
       }),
     });
+deletechat("User blocked successfully.");
   };
 
   let cont = () => {
@@ -288,7 +289,7 @@ export default function Chat(props) {
       setfnc("");
     } else if (fnc === "BlockChat") {
       blockUser();
-      deletechat("User blocked successfully.");
+      
       setfnc("");
     } else if (fnc === "Report") {
       enqueueSnackbar(
