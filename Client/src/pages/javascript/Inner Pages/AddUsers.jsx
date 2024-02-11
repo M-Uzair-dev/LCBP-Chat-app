@@ -90,6 +90,9 @@ export default function AddUsers(props) {
   useEffect(() => {
     setLoading(true);
     if (inputval === "") {
+      if (!usersLoaded) {
+        return;
+      }
       if (users.length === 0) {
         setNoresults(true);
         setData([]);
