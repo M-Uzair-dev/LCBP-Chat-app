@@ -4,16 +4,18 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ChatCard from "../../../components/javascript/ChatCard";
 import pfp from "../../../images/defaultpic.jpg";
 import Button from "../../../components/javascript/Button";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import Confirm from "./Confirm";
 import { useSnackbar } from "notistack";
+import { setUser } from "../../../Redux/Features/userSlice";
 
 const Settings = (props) => {
   const user = useSelector((state) => state.user);
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
+  const dispatch = useDispatch();
 
   const [privacypage, setPrivacypage] = useState(false);
   const [blockedpage, setBlockedpage] = useState(false);
@@ -30,20 +32,41 @@ const Settings = (props) => {
   const [chatChecked, setChatChecked] = useState(user.chat || "everyone");
   const [count, setCount] = useState(0);
 
-  const updatePrivacy = () => {
-    fetch("https://messegitapi.vercel.app/auth/privacy", {
-      method: "post",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        id: user.id,
-        privacy: {
-          img: pfpChecked,
-          chat: chatChecked,
-        },
-      }),
-    });
-
-    enqueueSnackbar("Privacy updated.", { variant: "success" });
+  const updatePrivacy = async () => {
+    try {
+      let response = await fetch(
+        "https://messegitapi.vercel.app/auth/privacy",
+        {
+          method: "post",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            id: user.id,
+            privacy: {
+              img: pfpChecked,
+              chat: chatChecked,
+            },
+          }),
+        }
+      );
+      let res = await response.json();
+      if (res.success) {
+        enqueueSnackbar("Privacy updated.", { variant: "success" });
+        let temp = {
+          name: res.user.name,
+          username: res.user.username,
+          id: res.user._id,
+          imageurl: res.user.imageurl,
+          about: res.user.about,
+          img: res.user.privacy.img,
+          chat: res.user.privacy.chat,
+        };
+        dispatch(setUser(temp));
+      } else {
+        enqueueSnackbar("Server error.", { variant: "error" });
+      }
+    } catch (e) {
+      enqueueSnackbar("Server error.", { variant: "error" });
+    }
   };
 
   useEffect(() => {

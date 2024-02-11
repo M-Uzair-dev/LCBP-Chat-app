@@ -89,8 +89,9 @@ module.exports.editPrivacy = async (req, res, next) => {
       chat.markModified("data");
       await chat.save();
     }
+    res.status(200).json({ success: true, user });
   } catch (err) {
-    res.status(500).json({ error: "Internal server error" });
+    res.status(500).json({ success: false, error: "Internal server error" });
   }
 };
 
@@ -194,18 +195,23 @@ module.exports.findUsers = async (req, res) => {
 };
 
 module.exports.block = async (req, res) => {
-  let { chatId, userId } = req.body;
-  let user = await usermodel.findById(userId);
-  let chat = await chatModel.findById(chatId);
-  let userid = chat.members.find((e) => e !== userId);
+  try {
+    let { chatId, userId } = req.body;
+    let user = await usermodel.findById(userId);
+    let chat = await chatModel.findById(chatId);
+    let userid = chat.members.find((e) => e !== userId);
 
-  if (user.blocked) {
-    user.blocked.push(userid);
-  } else {
-    user.blocked = [userid];
+    if (user.blocked) {
+      user.blocked.push(userid);
+    } else {
+      user.blocked = [userid];
+    }
+
+    await user.save();
+    res.status(200).json({ success: true });
+  } catch (err) {
+    res.status(400).json({ success: false, errorMessage: err.message });
   }
-
-  await user.save();
 };
 module.exports.GetBlocked = async (req, res) => {
   try {
