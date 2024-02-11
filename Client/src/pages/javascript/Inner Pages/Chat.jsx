@@ -340,7 +340,6 @@ export default function Chat(props) {
             <div className="barleftdiv">
               <img
                 src={image || pfp}
-                alt="user image"
                 style={
                   isGroup
                     ? { border: "2px solid #12e269" }

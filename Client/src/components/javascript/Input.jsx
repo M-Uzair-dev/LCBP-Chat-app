@@ -18,6 +18,7 @@ const Input = (props) => {
     id,
     value,
     onchange,
+    iconClick,
   } = props;
 
   const commonInputProps = {
@@ -55,7 +56,12 @@ const Input = (props) => {
               <VisibilityOffIcon className="icon" />
             )
           ) : (
-            <SearchRoundedIcon className="icon" />
+            <SearchRoundedIcon
+              className="icon"
+              onClick={() => {
+                iconClick();
+              }}
+            />
           )}
         </div>
       )}

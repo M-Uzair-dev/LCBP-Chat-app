@@ -5,8 +5,8 @@ import Button from "../../../components/javascript/Button";
 import Input from "../../../components/javascript/Input";
 import CloseIcon from "@mui/icons-material/Close";
 import { useNavigate, useParams } from "react-router-dom";
+import pfp from "../../../images/defaultpic.jpg";
 import { useSelector } from "react-redux";
-import tick from "../../../images/tick.png";
 import { TailSpin } from "react-loader-spinner";
 import { useSnackbar } from "notistack";
 
@@ -88,7 +88,7 @@ export default function AddUsers(props) {
   }, [props.visible]);
 
   useEffect(() => {
-    if (!usersLoaded) return;
+    setLoading(true);
     if (inputval === "") {
       if (users.length === 0) {
         setNoresults(true);
@@ -113,6 +113,7 @@ export default function AddUsers(props) {
           body: JSON.stringify({
             username: inputval,
             usersname: user.username,
+            userId: user.id,
           }),
         });
 
@@ -138,6 +139,56 @@ export default function AddUsers(props) {
 
     fetchData();
   }, [inputval]);
+
+  const handleSubmit = async () => {
+    setLoading(true);
+    if (inputval === "") {
+      if (users.length === 0) {
+        setNoresults(true);
+        setData([]);
+        setUsers([]);
+        setMembers([]);
+        return;
+      } else {
+        setNoresults(false);
+        setData(users);
+        return;
+      }
+    }
+    setNoresults(false);
+    try {
+      const res = await fetch("https://messegitapi.vercel.app/auth/find", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: inputval,
+          usersname: user.username,
+          userId: user.id,
+        }),
+      });
+
+      if (!res.ok) {
+        throw new Error(`HTTP error! Status: ${res.status}`);
+      }
+
+      const result = await res.json();
+
+      if (result.NoUser) {
+        setNoresults(true);
+        setData([]);
+        setLoading(false);
+        return;
+      }
+      console.log(result.users);
+      setData(result.users);
+      setLoading(false);
+    } catch (e) {
+      setLoading(false);
+      console.error(e);
+    }
+  };
 
   let submit = async () => {
     try {
@@ -201,6 +252,9 @@ export default function AddUsers(props) {
             id="text"
             baseColor="rgb(230, 230, 230)"
             search="true"
+            iconClick={() => {
+              handleSubmit;
+            }}
           />
         </div>
         <div className="addpagecards">
@@ -240,7 +294,8 @@ export default function AddUsers(props) {
               return (
                 <ChatCard
                   key={e._id}
-                  pfp={members.includes(e._id) ? tick : e.imageurl}
+                  pfp={e.imageurl || pfp}
+                  selected={members.includes(e._id)}
                   name={e.username || "User's name"}
                   id={e._id}
                   onclick={() => {
