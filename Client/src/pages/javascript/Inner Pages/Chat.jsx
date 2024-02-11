@@ -280,13 +280,6 @@ export default function Chat(props) {
         userId: user.id,
       }),
     });
-    let response = await res.json();
-    if (response.success) {
-      deletechat("User blocked successfully.");
-    } else {
-      navigate("/chats");
-      enqueueSnackbar("An error occured.", { variant: "error" });
-    }
   };
 
   let cont = () => {
@@ -295,6 +288,7 @@ export default function Chat(props) {
       setfnc("");
     } else if (fnc === "BlockChat") {
       blockUser();
+      deletechat("User blocked successfully.");
       setfnc("");
     } else if (fnc === "Report") {
       enqueueSnackbar(
