@@ -98,10 +98,12 @@ export default function AddUsers(props) {
         setData([]);
         setUsers([]);
         setMembers([]);
+        setLoading(false);
         return;
       } else {
         setNoresults(false);
         setData(users);
+        setLoading(false);
         return;
       }
     }
