@@ -32,19 +32,16 @@ const ChatCard = memo(
           try {
             if (!user.id || !ChatId) return;
 
-            const res = await fetch(
-              "https://messegitapi.vercel.app/messages/getcount",
-              {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  chatId: ChatId,
-                  userId: user.id,
-                }),
-              }
-            );
+            const res = await fetch("http://localhost:5000/messages/getcount", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                chatId: ChatId,
+                userId: user.id,
+              }),
+            });
 
             if (!res.ok) {
               throw new Error(`HTTP error! Status: ${res.status}`);
@@ -82,19 +79,16 @@ const ChatCard = memo(
         try {
           if (!user.id || !ChatId) return;
 
-          const res = await fetch(
-            "https://messegitapi.vercel.app/messages/getcount",
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                chatId: ChatId,
-                userId: user.id,
-              }),
-            }
-          );
+          const res = await fetch("http://localhost:5000/messages/getcount", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              chatId: ChatId,
+              userId: user.id,
+            }),
+          });
 
           if (!res.ok) {
             throw new Error(`HTTP error! Status: ${res.status}`);

@@ -63,21 +63,18 @@ export default function Profilepage(props) {
       fileReader.onload = () => {
         fileRef.putString(fileReader.result, "data_url").then((snapshot) => {
           snapshot.ref.getDownloadURL().then(async (url) => {
-            let res = await fetch(
-              "https://messegitapi.vercel.app/auth/update",
-              {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
+            let res = await fetch("http://localhost:5000/auth/update", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                updatedFields: {
+                  imageurl: url,
                 },
-                body: JSON.stringify({
-                  updatedFields: {
-                    imageurl: url,
-                  },
-                  id: user.id,
-                }),
-              }
-            );
+                id: user.id,
+              }),
+            });
             if (!res.ok) {
               throw new Error(`HTTP error! Status: ${res.status}`);
             }
@@ -112,7 +109,7 @@ export default function Profilepage(props) {
   let saveUser = async () => {
     setLoading(true);
     try {
-      let res = await fetch("https://messegitapi.vercel.app/auth/update", {
+      let res = await fetch("http://localhost:5000/auth/update", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

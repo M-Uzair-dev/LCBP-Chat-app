@@ -36,16 +36,13 @@ const Login = () => {
       } else if (data.password === "") {
         enqueueSnackbar("Password is required", { variant: "error" });
       } else {
-        const response = await fetch(
-          "https://messegitapi.vercel.app/auth/login",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-          }
-        );
+        const response = await fetch("http://localhost:5000/auth/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
         const res = await response.json();
         if (res.success) {
           localStorage.setItem("id", res.id);
@@ -66,8 +63,8 @@ const Login = () => {
       <section className="leftcont">
         <img src={logo} alt="Logo" className="mobilelogo" />
         <div className="welcomediv">
-          <h1>Welcome Back</h1>
-          <p>Your contacts await you !</p>
+          <h1>LCBP Chat</h1>
+          <p>Log into an existing account.</p>
         </div>
         <div>
           <div className="inputdiv">
@@ -88,31 +85,14 @@ const Login = () => {
               id="password"
             />
           </div>
-          <div className="remembermediv">
-            <div className="inneremember">
-              <input type="checkbox" id="remember" />{" "}
-              <label htmlFor="remember">Remember me ?</label>
-            </div>
-            <p>Forgot Password ?</p>
-          </div>
         </div>
         <div>
           <div className="buttonsdiv">
             <Button
               loading={loading === "button"}
               text="Login"
-              theme="dark"
+              theme="gradient"
               submit={submit}
-            />
-            <Button
-              loading={loading === "google"}
-              text="Continue with Google"
-              theme="light"
-              submit={() => {
-                enqueueSnackbar("Google auth will be added soon.", {
-                  variant: "success",
-                });
-              }}
             />
           </div>
           <div className="leftlastdiv">
@@ -127,27 +107,6 @@ const Login = () => {
               </span>
             </p>
           </div>
-        </div>
-      </section>
-      <section className="rightcont">
-        <img src={logo} alt="Logo" className="logo" />
-        <h1>MESSEGIT</h1>
-        <p>
-          Built by Uzair Manan, Messegit is a secure and privacy-focused
-          communication platform. With its modern interface, connect with
-          friends and family through text-based messaging without sharing phone
-          numbers. Whether staying in touch globally or chatting privately,
-          Meggegit provides a reliable and efficient alternative.
-        </p>
-        <div className="dots">
-          <div
-            className="line"
-            onClick={() => {
-              console.log(data);
-            }}
-          ></div>
-          <div className="dot"></div>
-          <div className="dot"></div>
         </div>
       </section>
     </div>

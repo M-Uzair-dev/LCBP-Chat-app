@@ -25,8 +25,7 @@
   justify-content: space-between;
 }
 .InnerLeftTopBar > img {
-  height: 100%;
-  border-radius: 50%;
+  height: 50%;
 }
 .InnerLeftTopBarRight {
   height: 100%;
@@ -484,7 +483,7 @@
   background-color: #bfa9e2;
 }
 .chatlogo {
-  height: 200px;
+  height: 50px;
   position: absolute;
   top: 50%;
   left: 50%;

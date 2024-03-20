@@ -4,7 +4,7 @@
   margin: 5vh auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   max-width: 1500px;
 }
 .mobilelogo {
@@ -14,7 +14,8 @@
 /*                   Left Side                   */
 
 .leftcont {
-  width: 40%;
+  width: 100%;
+  max-width: 600px;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -94,7 +95,6 @@
 }
 .logo {
   width: 25%;
-  border-radius: 60px;
 }
 .rightcont h1 {
   font-size: 2rem;

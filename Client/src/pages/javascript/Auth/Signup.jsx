@@ -59,14 +59,11 @@ const Signup = () => {
           finaldata.username.replace(" ", "");
         }
 
-        const response = await fetch(
-          "https://messegitapi.vercel.app/auth/signup",
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(finaldata),
-          }
-        );
+        const response = await fetch("http://localhost:5000/auth/signup", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(finaldata),
+        });
 
         const data = await response.json();
 
@@ -105,16 +102,13 @@ const Signup = () => {
         enqueueSnackbar("Parword is too short.", { variant: "error" });
       } else {
         console.log(data.email);
-        const response = await fetch(
-          "https://messegitapi.vercel.app/auth/check",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-          }
-        );
+        const response = await fetch("http://localhost:5000/auth/check", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
 
         if (response.ok) {
           const responseData = await response.json();
@@ -195,21 +189,8 @@ const Signup = () => {
                 id="password"
               />
             </div>
-            <div className="remembermediv">
-              <input type="checkbox" /> <label>Remember me ?</label>
-              <p>Need Help ?</p>
-            </div>
             <div className="buttonsdiv">
-              <Button theme="dark" text="Signup" submit={submit} />
-              <Button
-                theme="light"
-                text="Continue with Google"
-                submit={() => {
-                  enqueueSnackbar("Google auth will be added soon.", {
-                    variant: "success",
-                  });
-                }}
-              />
+              <Button theme="gradient" text="Signup" submit={submit} />
             </div>
             <div className="leftlastdiv">
               <p>
@@ -222,22 +203,6 @@ const Signup = () => {
                   Log in
                 </span>
               </p>
-            </div>
-          </section>
-          <section className="rightcont">
-            <img src={logo} alt="Logo" className="logo" />
-            <h1>MESSEGIT</h1>
-            <p className="textbody">
-              Built by Uzair Manan, Messegit is a secure and privacy-focused
-              communication platform. With its modern interface, connect with
-              friends and family through text-based messaging without sharing
-              phone numbers. Whether staying in touch globally or chatting
-              privately, Meggegit provides a reliable and efficient alternative.
-            </p>
-            <div className="dots">
-              <div className="line"></div>
-              <div className="dot"></div>
-              <div className="dot"></div>
             </div>
           </section>
         </div>
