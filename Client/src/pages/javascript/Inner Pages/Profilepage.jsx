@@ -63,7 +63,7 @@ export default function Profilepage(props) {
       fileReader.onload = () => {
         fileRef.putString(fileReader.result, "data_url").then((snapshot) => {
           snapshot.ref.getDownloadURL().then(async (url) => {
-            let res = await fetch("http://localhost:5000/auth/update", {
+            let res = await fetch("http://lcbp-api.vercel.app/auth/update", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -109,7 +109,7 @@ export default function Profilepage(props) {
   let saveUser = async () => {
     setLoading(true);
     try {
-      let res = await fetch("http://localhost:5000/auth/update", {
+      let res = await fetch("http://lcbp-api.vercel.app/auth/update", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

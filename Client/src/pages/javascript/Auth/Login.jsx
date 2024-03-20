@@ -36,7 +36,7 @@ const Login = () => {
       } else if (data.password === "") {
         enqueueSnackbar("Password is required", { variant: "error" });
       } else {
-        const response = await fetch("http://localhost:5000/auth/login", {
+        const response = await fetch("http://lcbp-api.vercel.app/auth/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

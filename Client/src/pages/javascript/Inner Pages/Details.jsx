@@ -40,7 +40,7 @@ export default function Details(props) {
       try {
         if (!user.id || !id) return;
 
-        const res = await fetch("http://localhost:5000/chats/details", {
+        const res = await fetch("http://lcbp-api.vercel.app/chats/details", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -96,7 +96,7 @@ export default function Details(props) {
 
   let deletechat = async (message) => {
     try {
-      const res = await fetch("http://localhost:5000/chats/delete", {
+      const res = await fetch("http://lcbp-api.vercel.app/chats/delete", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -124,7 +124,7 @@ export default function Details(props) {
 
   let exitgroup = async (message) => {
     try {
-      const res = await fetch("http://localhost:5000/chats/exit", {
+      const res = await fetch("http://lcbp-api.vercel.app/chats/exit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

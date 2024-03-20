@@ -34,7 +34,7 @@ const Settings = (props) => {
 
   const updatePrivacy = async () => {
     try {
-      let response = await fetch("http://localhost:5000/auth/privacy", {
+      let response = await fetch("http://lcbp-api.vercel.app/auth/privacy", {
         method: "post",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -70,7 +70,7 @@ const Settings = (props) => {
     let fetchBlocked = async () => {
       try {
         let blockedUsers = await fetch(
-          "http://localhost:5000/auth/getBlocked",
+          "http://lcbp-api.vercel.app/auth/getBlocked",
           {
             method: "POST",
             headers: {
@@ -106,7 +106,7 @@ const Settings = (props) => {
   };
   let unBlock = async () => {
     try {
-      let response = await fetch("http://localhost:5000/auth/unblock", {
+      let response = await fetch("http://lcbp-api.vercel.app/auth/unblock", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -133,7 +133,7 @@ const Settings = (props) => {
 
   let confirmPass = async () => {
     try {
-      let result = await fetch("http://localhost:5000/auth/compare", {
+      let result = await fetch("http://lcbp-api.vercel.app/auth/compare", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -165,7 +165,7 @@ const Settings = (props) => {
   };
   let DeleteAccount = async () => {
     try {
-      let result = await fetch("http://localhost:5000/auth/delete", {
+      let result = await fetch("http://lcbp-api.vercel.app/auth/delete", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
