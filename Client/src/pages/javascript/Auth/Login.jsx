@@ -61,7 +61,6 @@ const Login = () => {
   return (
     <div className="maincont">
       <section className="leftcont">
-        <img src={logo} alt="Logo" className="mobilelogo" />
         <div className="welcomediv">
           <h1>LC Chat</h1>
           <p>Log into an existing account.</p>

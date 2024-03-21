@@ -169,7 +169,6 @@ const Signup = () => {
       <div>
         <div className="maincont">
           <section className="leftcont">
-            <img src={logo} alt="Logo" className="mobilelogo" />
             <div className="welcomediv">
               <h1>Sign up</h1>
               <p>Create your LC Chat account</p>
