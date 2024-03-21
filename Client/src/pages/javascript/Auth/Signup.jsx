@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Input from "../../../components/javascript/Input";
 import Button from "../../../components/javascript/Button";
 import { useNavigate } from "react-router-dom";
-import logo from "../../../images/logo.PNG";
+import logo from "../../../images/transparentlogo.png";
 import { useSnackbar } from "notistack";
 import "../../css/auth.css";
 
@@ -59,11 +59,14 @@ const Signup = () => {
           finaldata.username.replace(" ", "");
         }
 
-        const response = await fetch("http://lcbp-api.vercel.app/auth/signup", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(finaldata),
-        });
+        const response = await fetch(
+          "https://lcbp-api.vercel.app/auth/signup",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(finaldata),
+          }
+        );
 
         const data = await response.json();
 
@@ -102,7 +105,7 @@ const Signup = () => {
         enqueueSnackbar("Parword is too short.", { variant: "error" });
       } else {
         console.log(data.email);
-        const response = await fetch("http://lcbp-api.vercel.app/auth/check", {
+        const response = await fetch("https://lcbp-api.vercel.app/auth/check", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -169,7 +172,7 @@ const Signup = () => {
             <img src={logo} alt="Logo" className="mobilelogo" />
             <div className="welcomediv">
               <h1>Sign up</h1>
-              <p>Create your messegit account</p>
+              <p>Create your LC Chat account</p>
             </div>
             <div className="inputdiv">
               <Input

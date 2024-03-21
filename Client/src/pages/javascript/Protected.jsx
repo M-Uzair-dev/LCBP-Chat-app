@@ -20,7 +20,7 @@ export default function Protected() {
         }
 
         const response = await fetch(
-          "http://lcbp-api.vercel.app/auth/validate",
+          "https://lcbp-api.vercel.app/auth/validate",
           {
             method: "POST",
             headers: {

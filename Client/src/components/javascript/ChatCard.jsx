@@ -33,7 +33,7 @@ const ChatCard = memo(
             if (!user.id || !ChatId) return;
 
             const res = await fetch(
-              "http://lcbp-api.vercel.app/messages/getcount",
+              "https://lcbp-api.vercel.app/messages/getcount",
               {
                 method: "POST",
                 headers: {
@@ -83,7 +83,7 @@ const ChatCard = memo(
           if (!user.id || !ChatId) return;
 
           const res = await fetch(
-            "http://lcbp-api.vercel.app/messages/getcount",
+            "https://lcbp-api.vercel.app/messages/getcount",
             {
               method: "POST",
               headers: {

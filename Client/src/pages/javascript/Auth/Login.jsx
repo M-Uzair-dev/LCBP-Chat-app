@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Input from "../../../components/javascript/Input";
 import Button from "../../../components/javascript/Button";
 import { useNavigate } from "react-router-dom";
-import logo from "../../../images/logo.PNG";
+import logo from "../../../images/transparentlogo.png";
 import "../../css/auth.css";
 import { useSnackbar } from "notistack";
 
@@ -36,7 +36,7 @@ const Login = () => {
       } else if (data.password === "") {
         enqueueSnackbar("Password is required", { variant: "error" });
       } else {
-        const response = await fetch("http://lcbp-api.vercel.app/auth/login", {
+        const response = await fetch("https://lcbp-api.vercel.app/auth/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -63,7 +63,7 @@ const Login = () => {
       <section className="leftcont">
         <img src={logo} alt="Logo" className="mobilelogo" />
         <div className="welcomediv">
-          <h1>LCBP Chat</h1>
+          <h1>LC Chat</h1>
           <p>Log into an existing account.</p>
         </div>
         <div>

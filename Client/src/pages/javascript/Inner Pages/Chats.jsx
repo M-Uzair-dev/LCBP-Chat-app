@@ -34,7 +34,7 @@ export default function Chats(props) {
       try {
         if (!user.id) return;
 
-        const res = await fetch("http://lcbp-api.vercel.app/chats/get", {
+        const res = await fetch("https://lcbp-api.vercel.app/chats/get", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

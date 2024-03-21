@@ -51,7 +51,7 @@ export default function Chat(props) {
       try {
         if (!user.id || !id) return;
 
-        const res = await fetch("http://lcbp-api.vercel.app/messages/get", {
+        const res = await fetch("https://lcbp-api.vercel.app/messages/get", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -134,7 +134,7 @@ export default function Chat(props) {
       console.log("Ran");
       try {
         const res = await fetch(
-          "http://lcbp-api.vercel.app/messages/getlatest",
+          "https://lcbp-api.vercel.app/messages/getlatest",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -169,7 +169,7 @@ export default function Chat(props) {
 
   let deletechat = async (m) => {
     try {
-      const res = await fetch("http://lcbp-api.vercel.app/chats/delete", {
+      const res = await fetch("https://lcbp-api.vercel.app/chats/delete", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -197,7 +197,7 @@ export default function Chat(props) {
 
   let exitgroup = async (message) => {
     try {
-      const res = await fetch("http://lcbp-api.vercel.app/chats/exit", {
+      const res = await fetch("https://lcbp-api.vercel.app/chats/exit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -242,7 +242,7 @@ export default function Chat(props) {
       setLatestMessage(messege);
       if (!user.id || !id) throw new Error(`HTTP error! Status: ${res.status}`);
       setMessege("");
-      const res = await fetch("http://lcbp-api.vercel.app/messages/new", {
+      const res = await fetch("https://lcbp-api.vercel.app/messages/new", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -270,7 +270,7 @@ export default function Chat(props) {
   };
 
   let blockUser = async () => {
-    const res = await fetch("http://lcbp-api.vercel.app/auth/block", {
+    const res = await fetch("https://lcbp-api.vercel.app/auth/block", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

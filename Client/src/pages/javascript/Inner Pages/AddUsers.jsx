@@ -44,7 +44,7 @@ export default function AddUsers(props) {
       try {
         if (!user.id || !id) return;
 
-        const res = await fetch("http://lcbp-api.vercel.app/chats/details", {
+        const res = await fetch("https://lcbp-api.vercel.app/chats/details", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -107,7 +107,7 @@ export default function AddUsers(props) {
     setNoresults(false);
     const fetchData = async () => {
       try {
-        const res = await fetch("http://lcbp-api.vercel.app/auth/find", {
+        const res = await fetch("https://lcbp-api.vercel.app/auth/find", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -159,7 +159,7 @@ export default function AddUsers(props) {
     }
     setNoresults(false);
     try {
-      const res = await fetch("http://lcbp-api.vercel.app/auth/find", {
+      const res = await fetch("https://lcbp-api.vercel.app/auth/find", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -199,7 +199,7 @@ export default function AddUsers(props) {
         enqueueSnackbar("Please select any users", { variant: "error" });
         return;
       }
-      let res = await fetch("http://lcbp-api.vercel.app/chats/add", {
+      let res = await fetch("https://lcbp-api.vercel.app/chats/add", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
