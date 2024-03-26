@@ -12,7 +12,7 @@ const app = express();
 app.use(
   cors({
     credentials: true,
-    origin: "https://lcbp-chat.vercel.app",
+    origin: "https://khoudmukhtar.net",
   })
 );
 
