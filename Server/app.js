@@ -12,7 +12,7 @@ const app = express();
 app.use(
   cors({
     credentials: true,
-    origin: "http://khoudmukhtar.net",
+    origin: "https://khoudmukhtar.net",
   })
 );
 
